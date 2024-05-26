@@ -24,12 +24,12 @@ export function useFetch(url) {
         setIsLoading(true);
 
         return fetch(url)
-            .finally(() => {
-                setIsLoading(false)
-            })
             .then(res => res.json())
             .then(setData)
-            .catch(setError);
+            .catch(setError)
+            .finally(() => {
+              setIsLoading(false)
+            });
     }
 
     useEffect(() => {
